@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/core/resource/app_assets.dart';
 import 'package:flutter_application_1/core/resource/theme/app_colors.dart';
-import 'package:flutter_application_1/feature/auth/screens/sign_in.dart';
+import 'package:flutter_application_1/feature/auth/screens/sign_in_screen/sign_in.dart';
 
 class WelcomeScreen extends StatelessWidget {
   const WelcomeScreen({super.key});

@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/core/resource/extensions/textstyle_extension.dart';
+import 'package:flutter_application_1/core/resource/theme/app_textstyle.dart';
 
-class SignInButton extends StatelessWidget {
-  const SignInButton({required this.text, required this.image, super.key});
+class AuthButton extends StatelessWidget {
+  const AuthButton({required this.text, required this.image, super.key});
   final String text;
   final Widget image;
 
@@ -20,7 +22,10 @@ class SignInButton extends StatelessWidget {
             height: 30,
             child: image,
           ),
-          Text(text),
+          Text(
+            text,
+            style: AppTextstyle.regular.setSize(14),
+          ),
         ],
       ),
     );

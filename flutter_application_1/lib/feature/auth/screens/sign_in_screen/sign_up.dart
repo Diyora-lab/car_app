@@ -7,6 +7,7 @@ import 'package:flutter_application_1/core/resource/theme/app_textstyle.dart';
 import 'package:flutter_application_1/core/services/shared_prefs.dart';
 import 'package:flutter_application_1/feature/auth/screens/auth_button.dart';
 import 'package:flutter_application_1/feature/auth/screens/auth_text_field.dart';
+import 'package:flutter_application_1/feature/auth/screens/sign_in_screen/sign_in.dart';
 
 class SignUp extends StatefulWidget {
   const SignUp({super.key});
@@ -71,7 +72,7 @@ class _SignUpState extends State<SignUp> {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => const SignUp(),
+                      builder: (context) => const SignIn(),
                     ),
                   );
                 },

@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/feature/cart/cart_provider.dart';
 import 'package:flutter_application_1/feature/home/home_screen.dart';
-import 'package:flutter_application_1/feature/welcome/welcome_screen.dart';
+import 'package:flutter_application_1/feature/home/provider/cars_provider.dart';
+import 'package:provider/provider.dart';
 
 void main() {
   runApp(const CarApp());
@@ -11,8 +13,14 @@ class CarApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
-      home: HomeScreen(),
+    return MultiProvider(
+      providers: [
+        ChangeNotifierProvider(create: (context) => CarsProvider()),
+        ChangeNotifierProvider(create: (context) => CartProvider()),
+      ],
+      child: const MaterialApp(
+        home: HomeScreen(),
+      ),
     );
   }
 }

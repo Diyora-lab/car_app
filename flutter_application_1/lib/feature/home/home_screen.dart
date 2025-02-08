@@ -6,6 +6,7 @@ import 'package:flutter_application_1/core/resource/extensions/context_extension
 import 'package:flutter_application_1/core/resource/extensions/int_extension.dart';
 import 'package:flutter_application_1/feature/cart/cart_provider.dart';
 import 'package:flutter_application_1/feature/cart/cart_screen.dart';
+import 'package:flutter_application_1/feature/cart/detail/detail_screen.dart';
 import 'package:flutter_application_1/feature/home/provider/cars_provider.dart';
 import 'package:flutter_application_1/feature/home/widgets/ad_widget.dart';
 import 'package:flutter_application_1/feature/home/widgets/car_chip_widget.dart';
@@ -105,42 +106,50 @@ class _HomeScreenState extends State<HomeScreen> {
                     ),
                     delegate: SliverChildBuilderDelegate(
                       (BuildContext context, int index) {
-                        return Container(
-                          decoration: BoxDecoration(
-                            color: providerW.currentList[index].type.getColor
-                                .withOpacity(0.4),
-                            borderRadius: 20.borderRadius,
-                          ),
-                          child: Column(
-                            children: [
-                              Expanded(
-                                child: CachedNetworkImage(
-                                  placeholder: (context, url) =>
-                                      const SizedBox.shrink(),
-                                  errorWidget: (context, url, error) =>
-                                      const Icon(Icons.error),
-                                  imageUrl: providerW.currentList[index].image,
+                        return GestureDetector(
+                          onTap: () {
+                            context.push(
+                              DetailScreen(car: providerW.currentList[index]),
+                            );
+                          },
+                          child: Container(
+                            decoration: BoxDecoration(
+                              color: providerW.currentList[index].type.getColor
+                                  .withOpacity(0.4),
+                              borderRadius: 20.borderRadius,
+                            ),
+                            child: Column(
+                              children: [
+                                Expanded(
+                                  child: CachedNetworkImage(
+                                    placeholder: (context, url) =>
+                                        const SizedBox.shrink(),
+                                    errorWidget: (context, url, error) =>
+                                        const Icon(Icons.error),
+                                    imageUrl:
+                                        providerW.currentList[index].image,
+                                  ),
                                 ),
-                              ),
-                              Row(
-                                children: [
-                                  15.horizontalSpace,
-                                  Expanded(
-                                    child: Text(
-                                        "${providerW.currentList[index].brand} ${providerW.currentList[index].model}"),
-                                  ),
-                                  IconButton(
-                                    onPressed: () {
-                                      context
-                                          .read<CartProvider>()
-                                          .addItemToCart(
-                                              providerW.currentList[index]);
-                                    },
-                                    icon: const Icon(Icons.add_shopping_cart),
-                                  ),
-                                ],
-                              ),
-                            ],
+                                Row(
+                                  children: [
+                                    15.horizontalSpace,
+                                    Expanded(
+                                      child: Text(
+                                          "${providerW.currentList[index].brand} ${providerW.currentList[index].model}"),
+                                    ),
+                                    IconButton(
+                                      onPressed: () {
+                                        context
+                                            .read<CartProvider>()
+                                            .addItemToCart(
+                                                providerW.currentList[index]);
+                                      },
+                                      icon: const Icon(Icons.add_shopping_cart),
+                                    ),
+                                  ],
+                                ),
+                              ],
+                            ),
                           ),
                         );
                       },

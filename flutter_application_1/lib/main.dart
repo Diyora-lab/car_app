@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_application_1/feature/cart/cart_provider.dart';
 import 'package:flutter_application_1/feature/home/home_screen.dart';
 import 'package:flutter_application_1/feature/home/provider/cars_provider.dart';
+import 'package:flutter_application_1/feature/welcome/welcome_screen.dart';
 import 'package:provider/provider.dart';
 
 void main() {
@@ -19,7 +20,7 @@ class CarApp extends StatelessWidget {
         ChangeNotifierProvider(create: (context) => CartProvider()),
       ],
       child: const MaterialApp(
-        home: HomeScreen(),
+        home: WelcomeScreen(),
       ),
     );
   }
